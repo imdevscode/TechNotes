@@ -68,5 +68,51 @@ import numpy as np
 	print(arr.size)   # 4
 	print(arr.dtype)  # int64 (may vary)
 ```
+## Difference between `ndarray` and `array`
 
-- **Mathematical Functions:** Support element-wise operations and complex mathematical routines including linear algebra, Fourier transforms, and random number generation.  
+- **ndarray:** The core array object class in NumPy.  
+- **np.array():** A function used to create an `ndarray`.  
+ 
+## Shape of Array
+
+- **Shape** is an attribute of an array that tells you the dimensions (rows, columns, etc.).  
+- It returns the size along each axis:  
+  - **1D array** → `(length,)`  
+  - **2D array** → `(rows, columns)`  
+  - **3D array** → `(depth, rows, columns)`, and so on.  
+
+### Examples
+
+```python
+import numpy as np
+
+# 1D array
+a = np.array([1, 2, 3])
+print(a.shape)   # (3,)
+
+# 2D array
+b = np.array([[1, 2, 3],
+              [4, 5, 6]])
+print(b.shape)   # (2, 3)
+
+# 3D array
+c = np.array([[[1, 2],
+               [3, 4]],
+              [[5, 6],
+               [7, 8]]])
+print(c.shape)   # (2, 2, 2)
+```
+- Also we can Reshape an 1D array to multi-dimension array.
+  ```python
+	arr = np.arange(6)			# [0, 1, 2, 3, 4, 5]
+	print(arr.reshape(2, 3))	# Reshape to 2D array - 2 rows, 3 columns
+								# [[0 1 2] [3 4 5]]
+  ```
+- Setting shape of existing array
+  ```python
+	x = np.array([1, 2, 3, 4, 5, 6])
+	x.shape = (2, 3)
+	print(x)
+	# [[1 2 3]
+	#  [4 5 6]]
+  ```
