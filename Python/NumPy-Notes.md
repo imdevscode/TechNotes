@@ -116,3 +116,62 @@ print(c.shape)   # (2, 2, 2)
 	# [[1 2 3]
 	#  [4 5 6]]
   ```
+
+## Broadcasting
+
+- **Broadcasting** allows operations on arrays of different shapes.  
+- It works by expanding the smaller array along missing dimensions so that the shapes match according to specific rules.  
+
+### Broadcasting Rules
+1. Same dimension size → compatible.  
+2. One of them is `1` → stretch (broadcast) that dimension.  
+3. If neither matches → incompatible (error).  
+
+### Example 1: Simple Broadcasting
+
+```python
+import numpy as np
+
+a = np.array([1, 2, 3])       # Shape: (3,)
+b = np.array([[10], [20]])    # Shape: (2,1)
+
+# Broadcasting b along columns, a along rows
+result = a + b
+print(result)
+# [[11 12 13]
+#  [21 22 23]]
+```
+### Output & Shapes during Broadcasting
+
+```python
+a: (1, 3)    → [[1, 2, 3]]
+b: (2, 1)    → [[10],
+                 [20]]
+
+# Result shape: (2, 3)
+# Output:
+[[11 12 13]
+ [21 22 23]]
+```
+### Example 2: Broadcasting with Scalars
+
+```python
+import numpy as np
+
+arr = np.array([1, 2, 3])
+print(arr + 10)   # Adds 10 to every element
+
+# Output
+# [11 12 13]
+```
+### Example 3: Incompatible Shapes
+
+```python
+import numpy as np
+
+x = np.ones((3, 2))
+y = np.ones((4, 2))
+
+x + y			# ❌ ValueError: operands could not be broadcast together
+# Reason: trailing dimensions (2) match, but (3) and (4) do not.
+```
