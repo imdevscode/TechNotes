@@ -128,7 +128,25 @@ df = pd.read_excel("data.xlsx", sheet_name="Sheet1")
 Note- here "df" represent the DataFrame.
 ```
 ---
+## Viewing Data in Pandas
+```python
+df.head(n) 		# Displays first n rows (default 5).
 
+df.tail(n) 		# Displays last n rows (default 5).
+
+df.shape 		# Returns dimension of DataFrame (rows, columns).
+
+df.columns 		# Lists column names.
+
+df.index 		# Shows index range.
+
+df.info() 		# Summary of dataset (non-null count, datatypes, memory usage).
+
+df.describe() 	# Statistical summary (mean, std, min, max, percentiles for numeric columns).
+
+df.dtypes       # tells column datatypes
+```
+---
 ## Indexing & Selection
 - **Indexing & Selection** are used to access, filter, or manipulate subsets of data.  
 - There are two main types:  
@@ -136,12 +154,12 @@ Note- here "df" represent the DataFrame.
   - **Index-based indexing (`.iloc`)**
 ### Example:
 ```python
-# Column selection
+# Column Selection
 df['col']               # Select a single column
 df[['col1','col2']]     # Select multiple columns (DataFrame).
 colValue = df.col		# Attribute selection (not recommended if column name has spaces/special chars)
 
-# Row selection
+# Row Selection
 df.iloc[0]				# First row by integer index.
 df.iloc[0:5]			# First 5 rows (exclusive).
 
@@ -151,7 +169,7 @@ df.loc[[2,5,7]]			# Select multiple rows by label.
 
 df.sample(5)			# Randomly select 5 rows.
 
-# Conditional filtering
+# Conditional Filtering
 df[df['Age'] > 20]
 
 # Using query
